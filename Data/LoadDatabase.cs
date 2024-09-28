@@ -3,13 +3,15 @@ using NetKubernetes.Models;
 
 namespace NetKubernetes.Data;
 
-public class LoadDatabase {
+public class LoadDatabase
+{
 
     public static async Task InsertarData(AppDbContext context, UserManager<Usuario> usuarioManager)
     {
-        if(!usuarioManager.Users.Any())
+        if (!usuarioManager.Users.Any())
         {
-            var usuario = new Usuario {
+            var usuario = new Usuario
+            {
                 Nombre = "Vaxi",
                 Apellido = "Drez",
                 Email = "vaxi.drez.social@gmail.com",
@@ -21,16 +23,18 @@ public class LoadDatabase {
 
         }
 
-        if(!context.Inmuebles!.Any())
+        if (!context.Inmuebles!.Any())
         {
             context.Inmuebles!.AddRange(
-                new Inmueble{
+                new Inmueble
+                {
                     Nombre = "Casa de Playa",
                     Direccion = "Av. El Sol 32",
                     Precio = 4500M,
                     FechaCreacion = DateTime.Now
                 },
-                new Inmueble{
+                new Inmueble
+                {
                     Nombre = "Casa de Invierno",
                     Direccion = "Av. La Roca 101",
                     Precio = 3500M,
@@ -38,7 +42,7 @@ public class LoadDatabase {
                 }
             );
         }
-        
+
         context.SaveChanges();
     }
 
